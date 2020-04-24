@@ -1,8 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../src/style.css';
-import WebView from './components/native';
 
 
 import SignupUsers from '../src/components/signup';
@@ -26,7 +25,6 @@ import HospitalSignup from '../src/components/hospSignup';
 
 function App() {
   return(
-    <Fragment>
   <Router>
   <Route path='/signup' exact component ={SignupUsers}/>
   <Route path='/signin'  exact component ={LoginUsers}/>
@@ -47,8 +45,7 @@ function App() {
   <Route path= '/hosplogin' component={HospitalLogin}/>
   <Route path= '/hospsignup' component={HospitalSignup}/>
   </Router>
-  <WebView/>
-  </Fragment>
+  
   )
 }
 
