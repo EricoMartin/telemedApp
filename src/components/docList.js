@@ -18,7 +18,7 @@ export default class DoctorsList extends React.Component{
         }
     }
     componentDidMount(){
-        axios.get(`http://localhost:5000/api/v1/doc/`).then(docs=> {
+        axios.get(`https://rocky-tor-82022.herokuapp.com/api/v1/doc/`).then(docs=> {
             this.setState({  
               docs: docs.data,
             });

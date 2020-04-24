@@ -21,7 +21,7 @@ export default class DocLoginPage extends React.Component{
     }
     handleSubmit= evt =>{
         evt.preventDefault()
-        axios.post('http://localhost:5000/api/v1/auth/doc/signin', {
+        axios.post('https://rocky-tor-82022.herokuapp.com/api/v1/auth/doc/signin', {
             email: this.state.email,
             password: this.state.password
         })

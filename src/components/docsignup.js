@@ -31,7 +31,7 @@ export default class Signup extends React.Component {
     handleSubmit = (event) =>{
         event.preventDefault()
 
-        axios.post('http://localhost:5000/api/v1/auth/doc/signup/', {
+        axios.post('https://rocky-tor-82022.herokuapp.com/api/v1/auth/doc/signup/', {
             firstName : this.state.firstName ,
             lastName: this.state.lastName,
             hospital: this.state.hospital,

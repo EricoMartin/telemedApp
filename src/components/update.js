@@ -17,7 +17,7 @@ class NewUpdate extends Component {
 
   componentDidMount() {
     axios
-      .get(`http://localhost:5000/api/v1/posts/${this.props.match.params.id}`)
+      .get(`https://rocky-tor-82022.herokuapp.com/api/v1/posts/${this.props.match.params.id}`)
       .then(post => {
         this.setState({
           title: post.data.title,
@@ -47,7 +47,7 @@ class NewUpdate extends Component {
       title: this.state.title,
       content: this.state.content
     };
-    axios.post(`http://localhost:5000/api/v1/posts/update/${data.id}`, data).then(post => {
+    axios.post(`https://rocky-tor-82022.herokuapp.com/api/v1/posts/update/${data.id}`, data).then(post => {
       alert("Post Successfully Updated!");
       this.props.history.replace(`/post/${this.props.match.params.id}`);
     });

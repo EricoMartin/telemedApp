@@ -19,7 +19,7 @@ class Single extends Component {
 
   componentDidMount() {
     axios
-      .get(`http://localhost:5000/api/v1/posts/${this.props.match.params.id}`)
+      .get(`https://rocky-tor-82022.herokuapp.com/api/v1/posts/${this.props.match.params.id}`)
       .then(post => {
         this.setState({
           post: post.data
@@ -36,7 +36,7 @@ class Single extends Component {
   onDelete(e) {
     e.preventDefault();
     axios
-      .post(`http://localhost:5000/api/v1/posts/delete/${this.props.match.params.id}`)
+      .post(`https://rocky-tor-82022.herokuapp.com/api/v1/posts/delete/${this.props.match.params.id}`)
       .then(post => {
         alert("Post Successfully Deleted!");
         this.props.history.push("/");

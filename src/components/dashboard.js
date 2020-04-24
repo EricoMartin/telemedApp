@@ -96,7 +96,7 @@ export default class ProfilePage extends React.Component{
     async displayImage(evt){
         evt.preventDefault();
         const id = this.state._id;
-        await axios.get(`http://localhost:5000/api/v1/clients/display/${id}`, (err, result)=>{
+        await axios.get(`https://rocky-tor-82022.herokuapp.com/api/v1/clients/display/${id}`, (err, result)=>{
             if(err){
                 console.log(err)
             }
@@ -108,7 +108,7 @@ export default class ProfilePage extends React.Component{
     logOut(evt){
         evt.preventDefault();
         localStorage.removeItem('master-token');
-        axios.post('http://localhost:5000/api/v1/auth/signout', {
+        axios.post('https://rocky-tor-82022.herokuapp.com/api/v1/auth/signout', {
             email: this.state.email,
             password: this.state.password
         })

@@ -61,7 +61,7 @@ export default class DoctorsPage extends React.Component{
                 this.state.file
             )
 
-        await axios.post(`http://localhost:5000/api/v1/doc/upload/${this.state._id}`, 
+        await axios.post(`https://rocky-tor-82022.herokuapp.com/api/v1/doc/upload/${this.state._id}`, 
             formData,
             {
                 onUploadProgress: progressEvent => {

@@ -15,7 +15,7 @@ export default class ProfilePage extends React.Component{
     logOut(evt){
         evt.preventDefault();
         localStorage.removeItem('master-token');
-        axios.post('http://localhost:5000/api/v1/auth/signout', {
+        axios.post('https://rocky-tor-82022.herokuapp.com/api/v1/auth/signout', {
             email: this.state.email,
             password: this.state.password
         })

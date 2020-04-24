@@ -28,7 +28,7 @@ export default class BlogPage extends React.Component{
         }
     }
     componentDidMount(){
-        axios.get(`http://localhost:5000/api/v1/post/`).then(posts => {
+        axios.get(`https://rocky-tor-82022.herokuapp.com/api/v1/post/`).then(posts => {
             this.setState({  
               posts: posts.data,
             });

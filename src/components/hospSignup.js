@@ -41,7 +41,7 @@ export default class Signup extends React.Component {
         form.append("regNumber", this.state.regNumber )
         form.append("specialization", this.state.specialization )
 
-        axios.post('http://localhost:5000/api/v1/hosp/signup', form)
+        axios.post('https://rocky-tor-82022.herokuapp.com/api/v1/hosp/signup', form)
         .then(res =>{
             console.log("New Hospital created")
             if(res){
