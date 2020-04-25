@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  functions = "functions"
+  publish = "dist"
+
+  [[redirects]]
+  from = "/*"
+  to = "https://serene-knuth-9054a4.netlify.app"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
