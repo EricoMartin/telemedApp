@@ -1,26 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode'; 
 import { Image } from 'cloudinary-react';
 
-export default class BlogPage extends React.Component{
+class BlogPage extends React.Component{
     constructor(props) {
         super(props);
         this.state ={
             posts: [],
             _id: "",
             firstName : "",
-            lastName: "",
-            hospital: "",
-            hospitalAddress: "",
-            email: "",
-            phone:"",
-            regID: "",
-            workingHours: "",
-            consultFee: "",
-            specialization: "",
-            createdAt: "",
             imgUrl:"",
             publicId: "",
             file: '',
@@ -40,21 +30,11 @@ export default class BlogPage extends React.Component{
 
         
             this.setState ({
-            _id: decoded.newDoc._id,
-            hospital: decoded.newDoc.hospital,
-            hospitalAddress: decoded.newDoc.hospitalAddress,
-            workingHours: decoded.newDoc.workingHours,
-            firstName : decoded.newDoc.firstName,
-            lastName: decoded.newDoc.lastName,
-            email: decoded.newDoc.email,
-            phone: decoded.newDoc.phone,
-            specialization: decoded.newDoc.specialization,
-            regID: decoded.newDoc.regID,
-            consultFee: decoded.newDoc.consultFee,
-            createdAt: decoded.newDoc.createdAt,
-            imgUrl: decoded.newDoc.imgUrl,
-            publicId: decoded.newDoc.publicId,
-            imagePreviewUrl:  decoded.newDoc.imgUrl
+              _id: decoded._id,
+            firstName: decoded.firstName,
+            imgUrl: decoded.imgUrl,
+            publicId: decoded.publicId,
+            imagePreviewUrl:  decoded.imgUrl
         });
     }
     render(){
@@ -91,7 +71,7 @@ export default class BlogPage extends React.Component{
                     <Link to="/doctors" className="consult"><h5>Consult a Doctor</h5></Link>
                         
                     <div className="card-body">
-                <h4 className="card-text">Welcome Dr {this.state.firstName}!</h4>
+                <h4 className="card-text">Welcome  {this.state.firstName}!</h4>
                 </div>
                 
                 <div className="m-8">
@@ -113,3 +93,5 @@ export default class BlogPage extends React.Component{
                 }
 
 }
+
+export default withRouter(BlogPage);

@@ -126,6 +126,7 @@ ul li{
   margin: 15px 15px;
   height: 150px;
   width: 150px;
+  border-radius: 6px;
   border-left: 1px solid gray;
   border-right: 1px solid gray;
   border-top: 1px solid gray;

@@ -1,8 +1,11 @@
 import React from 'react';
+import {withRouter} from "react-router-dom";
 import axios from 'axios';
 import { Image } from 'cloudinary-react';
+import jwt_decode from 'jwt-decode';
+import imageurl from '../img/avatar.png';
 
-export default class ProfilePage extends React.Component{
+ class NavPage extends React.Component{
     constructor(props) {
         super(props);
         this.state ={
@@ -10,6 +13,14 @@ export default class ProfilePage extends React.Component{
             imagePreviewUrl: '',
         }
         this.logOut = this.logOut.bind(this);
+    }
+
+    componentDidMount(){
+        const decoded = jwt_decode(localStorage['master-token']);  
+        this.setState ({
+            imagePreviewUrl: decoded.imgUrl,
+            
+        })
     }
 
     logOut(evt){
@@ -22,6 +33,15 @@ export default class ProfilePage extends React.Component{
         this.props.history.replace('/');
     }
     render(){
+        let {imagePreviewUrl} = this.state;
+        let $imagePreview = null;
+        if (imagePreviewUrl) {
+        $imagePreview = (<img src={imagePreviewUrl} alt="user avatar" className="imgPreview" />);
+        } else if (Image) {
+        $imagePreview = (<Image cloudName="automart-app" publicId ={this.state.publicId} secret_url={this.state.imgUrl} height="100" width="100" src={this.state.imgUrl} className="imgPreview" crop="scale"alt="user avatar" />);
+        } else{
+            $imagePreview =(<img src={imageurl} alt="user avatar" className="imgPreview"/>)
+        }
         return (
             <div className="container">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light container">
@@ -39,7 +59,7 @@ export default class ProfilePage extends React.Component{
                         </div>
                         <div className="smWelcomeFeature">
                         <div>welcome {this.state.firstName}
-                        <Image cloudName="automart-app" publicId ={this.state.publicId} secret_url={this.state.imgUrl} height="50" width="50" src={this.state.imgUrl} className="imgPreview" crop="scale"alt="user avatar" /></div>
+                        <img src={imagePreviewUrl}  height="50" width="50" className="imgPreview" crop="scale"alt="user avatar" /></div>
                         </div>
                     </div>
                 </nav>
@@ -47,3 +67,6 @@ export default class ProfilePage extends React.Component{
                 )
         }
 }
+
+
+export default withRouter(NavPage);

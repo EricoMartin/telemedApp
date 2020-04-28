@@ -7,10 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import MaterialTable from 'material-table';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+import Navbar from '../components/navbar';
 
 
 
@@ -72,23 +69,7 @@ export default class CovidState extends React.Component{
     render(){
     return(
     <div className="container">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light container">
-        <a className="navbar-brand" href="#"><h2>Telemed</h2></a>
-        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div className="navbar-nav mr-auto">
-                        <a className="nav-item nav-link active" href="/">Home <span className="sr-only">(current)</span></a>
-                        <a className="nav-item nav-link" href="/select">Services</a>
-                        <a className="nav-item nav-link" href="/blog">Blog</a>
-                        <a className="nav-item nav-link" href="/covido">Covid-19</a>
-                        <a className="nav-item nav-link" href="/" onClick={this.logOut}>Logout</a>
-                        </div>
-                        <div className="smWelcomeFeature">
-                        <div>welcome {this.state.username}
-                        <Image cloudName="automart-app" publicId ={this.state.publicId} secret_url={this.state.imgUrl} height="50" width="50" src={this.state.imgUrl} className="imgPreview" crop="scale"alt="user avatar" /></div>
-                        </div>
-                    </div>
-                </nav>
-
+         <Navbar />
                 <div className="card text-center container-sm" >
                 <div className="card-header">
                 

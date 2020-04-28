@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode'; 
 import { Image } from 'cloudinary-react';
-import Navbar from '../components/navbar';
 
-export default class DoctorsList extends React.Component{
+
+class DoctorsList extends React.Component{
     constructor(props) {
         super(props);
         this.state ={
@@ -28,11 +28,11 @@ export default class DoctorsList extends React.Component{
 
         
             this.setState ({
-            firstName : decoded.newDoc.firstName,
-            lastName: decoded.newDoc.lastName,
-            imgUrl: decoded.newDoc.imgUrl,
-            publicId: decoded.newDoc.publicId,
-            imagePreviewUrl:  decoded.newDoc.imgUrl
+            firstName : decoded.firstName,
+            lastName: decoded.lastName,
+            imgUrl: decoded.imgUrl,
+            publicId: decoded.publicId,
+            imagePreviewUrl:  decoded.imgUrl
         });
     }
     
@@ -92,3 +92,4 @@ export default class DoctorsList extends React.Component{
                 }
 
 }
+export default withRouter(DoctorsList);

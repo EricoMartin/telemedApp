@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 import Resizer from 'react-image-file-resizer';
 //import imgurl from '../img/avatar.png';
@@ -12,7 +12,7 @@ import Facebook from './fbLogin';
 
 dotenv.config();
 
-export default class ProfilePage extends React.Component{
+ class ProfilePage extends React.Component{
     constructor(props) {
         super(props);
         console.log(this.props)
@@ -218,3 +218,5 @@ export default class ProfilePage extends React.Component{
     );
 }
 }
+
+export default withRouter(ProfilePage);
