@@ -78,7 +78,7 @@ class DoctorsList extends React.Component{
           {this.state.docs.map(post => (
             <li className="list-group-item d-flex align-items-center justify-content-between" key={post.firstName}>
               <h5>
-                <Link to={`/doc/${post._id}`}>Dr {post.firstName} {post.lastName}</Link>
+                <Link to={`/docs/${post._id}`}>Dr {post.firstName} {post.lastName}</Link>
               </h5>
               <span className="badge badge-primary badge-pill">{post.numComments}</span>
             </li>

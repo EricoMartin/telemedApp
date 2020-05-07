@@ -2,7 +2,10 @@
 /blog https://serene-knuth-9054a4.netlify.app/blog/:splat 200
 /covido https://serene-knuth-9054a4.netlify.app/covido/:splat 200
 /doctors https://serene-knuth-9054a4.netlify.app/doctors/:splat 200
+/post/* https://serene-knuth-9054a4.netlify.app/post/:splat 200
 /post/:id https://serene-knuth-9054a4.netlify.app/post/:id 200
+/update/* https://serene-knuth-9054a4.netlify.app/update/:splat 200
 /update/:id https://serene-knuth-9054a4.netlify.app/update/:id 200
 /doc https://serene-knuth-9054a4.netlify.app/doc 200
+/doc/:id https://serene-knuth-9054a4.netlify.app/doc/:id 200
 /hosp https://serene-knuth-9054a4.netlify.app/hosp 200

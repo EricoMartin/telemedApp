@@ -80,7 +80,7 @@ export default class CovidPage extends React.Component{
                 <AppBar position="static">
                     <Toolbar>
                     <Typography variant="h6" className='text-center'>
-                    Nigeria Covid-19 Data Details  
+                    Nigeria Covid-19 Data 
                     <Router>
                     <button type="button" className="btn btn-primary"  onClick={()=> {this.props.history.replace('/covidstates')}}>States Data</button>
                     <button type="button" className="btn btn-primary" onClick={()=> {this.props.history.replace('/covidmap')}}>Visualize</button>

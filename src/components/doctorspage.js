@@ -4,6 +4,7 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode'; 
 import { Image } from 'cloudinary-react';
 import Navbar from '../components/navbar';
+import EditForm from '../components/editImageForm';
 
 export default class DoctorsPage extends React.Component{
     constructor(props) {
@@ -25,9 +26,12 @@ export default class DoctorsPage extends React.Component{
             publicId: "",
             file: '',
             imagePreviewUrl: '',
+            imgState: true,
+            showImgState: false
         }
         this.submitImage = this.submitImage.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.clickButton = this.clickButton.bind(this);
     }
     componentDidMount(){
         const decoded = jwt_decode(localStorage['master-token']);  
@@ -48,7 +52,17 @@ export default class DoctorsPage extends React.Component{
             createdAt: decoded.newDoc.createdAt,
             imgUrl: decoded.newDoc.imgUrl,
             publicId: decoded.newDoc.publicId,
-            imagePreviewUrl:  decoded.newDoc.imgUrl
+            imagePreviewUrl:  decoded.newDoc.imgUrl,
+            imgState: true, 
+            showImgState: false
+        });
+    }
+
+    clickButton(){
+        this.setState ({
+            ...this.state,
+            imgState: false,
+            showImgState: true
         });
     }
     async handleSubmit(evt) {
@@ -84,7 +98,13 @@ export default class DoctorsPage extends React.Component{
           reader.readAsDataURL(file);
         
     }
-
+    EditImageButton = props => {
+        return <button className= "btn btn-primary btn-rounded btn-block" style= {{
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        width: '140px' }}
+        onClick={props.editImage}>Edit Image</button>
+      }
 
     render(){
         let {imagePreviewUrl} = this.state;
@@ -118,18 +138,9 @@ export default class DoctorsPage extends React.Component{
                 <h2 className="text-center">Doctors Profile</h2>|<br/><br/>
                     <div className="card text-center container-sm" >
                     <Link to="/doctors" className="consult"><h5>Consult a Doctor</h5></Link>
-                        <form className="welcomeFeature">
-                        <div className="card-imgUrl-top text-center" >
-                            
-                            {$imagePreview}
-                        </div>  
-                        <div className ="edittableImage">
-                            <input className ="images" type="file" encType="multipart/form-data" class="btn-primary" onChange={this.submitImage} />
-                            <br/>
-                            <br/>
-                            <button className= "btn btn-primary"  onClick= {this.handleSubmit}>Submit</button>
-                        </div> 
-                        </form>
+
+                    {this.state.imgState && <this.EditImageButton  editImage={this.clickButton}/>}
+                        {this.state.showImgState && <EditForm/>}
                     <div className="card-body">
                 <h4 className="card-text">Welcome Dr {this.state.firstName}!</h4>
                 </div>

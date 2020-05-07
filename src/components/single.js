@@ -27,9 +27,9 @@ class Single extends Component {
       });
       const decoded = jwt_decode(localStorage['master-token']);  
       this.setState ({
-            imgUrl: decoded.newDoc.imgUrl,
-            publicId: decoded.newDoc.publicId,
-            imagePreviewUrl:  decoded.newDoc.imgUrl
+            imgUrl: decoded.imgUrl,
+            publicId: decoded.publicId,
+            imagePreviewUrl:  decoded.imgUrl
       })
   }
 

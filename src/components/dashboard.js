@@ -6,6 +6,7 @@ import Resizer from 'react-image-file-resizer';
 import jwt_decode from 'jwt-decode'; 
 import { Image } from 'cloudinary-react';
 import dotenv from 'dotenv';
+import EditForm from '../components/clients/imageForm';
 
 
 import Facebook from './fbLogin';
@@ -31,11 +32,12 @@ dotenv.config();
             publicId: "",
             file: '',
             imagePreviewUrl: '',
+            imgState: true,
+            showImgState: false
         }
         this.logOut = this.logOut.bind(this);
-        this.submitImage = this.submitImage.bind(this);
-        this.displayImage = this.displayImage.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.clickButton = this.clickButton.bind(this);
+        this.closedBtn = this.closedBtn.bind(this);
     }
  
 
@@ -55,54 +57,26 @@ dotenv.config();
             createdAt: decoded.newClient.createdAt,
             isAdmin: decoded.newClient.isAdmin,
             imgUrl: decoded.newClient.imgUrl,
-            publicId: decoded.newClient.publicId  
+            publicId: decoded.newClient.publicId,
+            imagePreviewUrl:  decoded.newClient.imgUrl,
+            imgState: true,
+            showImgState: false  
         });
     }
 
-    async handleSubmit(evt) {
-        evt.preventDefault();
-        // TODO: do something with -> this.state.file
-        console.log('handle uploading-', this.state.file);
-        const formData = new FormData()
-            formData.append(
-                'images',
-                this.state.file
-            )
-
-        await axios.post(`http://localhost:5000/api/v1/clients/upload/${this.state._id}`, 
-            formData,
-            {
-                onUploadProgress: progressEvent => {
-                console.log(progressEvent.loaded / progressEvent.total)
-                }
-              }
-        )
-      }
-    submitImage(evt){
-        evt.preventDefault();
-        let reader = new FileReader();
-        let file = evt.target.files[0];
-
-        reader.onloadend =  () => {
-            this.setState({
-              file: file,
-              imagePreviewUrl: reader.result
-            });
-          }
-          reader.readAsDataURL(file);
-        
+    clickButton(){
+        this.setState ({
+            ...this.state,
+            imgState: false,
+            showImgState: true
+        });
     }
-
-    async displayImage(evt){
-        evt.preventDefault();
-        const id = this.state._id;
-        await axios.get(`https://rocky-tor-82022.herokuapp.com/api/v1/clients/display/${id}`, (err, result)=>{
-            if(err){
-                console.log(err)
-            }
-            return this.setState.imgUrl = result;
-        })
-        
+    closedBtn(){
+        this.setState ({
+            ...this.state,
+            imgState: true,
+            showImgState: false
+        });
     }
 
     logOut(evt){
@@ -114,6 +88,25 @@ dotenv.config();
         })
         this.props.history.push('/');
     }
+    ImageDiv = () =>{
+        return <div>
+            <img src={this.state.imagePreviewUrl}  height="50" width="50" className="imgPreview" crop="scale"alt="user avatar" /> 
+        </div>
+    }
+    EditImageButton = props => {
+        return (<div><h6 className ="black-text">Image size must not be more than 1MB! Suggested: 150px by 150px.</h6><button className= "btn btn-primary btn-rounded btn-block" style= {{
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        width: '140px' }}
+        onClick={props.editImage}>Edit Image</button></div>)
+      }
+      CloseButton = props => {
+        return <button className= "btn btn-primary btn-rounded btn-block" style= {{
+        margin: 'auto',
+        marginTop: '12px',
+        width: '100px' }}
+        onClick={props.closeImage}>Cancel</button>
+      }
     render(){
         let {imagePreviewUrl} = this.state;
         let $imagePreview = null;
@@ -139,25 +132,17 @@ dotenv.config();
                         </div>
                         <div className="smWelcomeFeature">
                         <div>welcome {this.state.username}
-                        <Image cloudName="automart-app" publicId ={this.state.publicId} secret_url={this.state.imgUrl} height="50" width="50" src={this.state.imgUrl} className="imgPreview" crop="scale"alt="user avatar" /></div>
+                        <img src={imagePreviewUrl}  height="50" width="50" className="imgPreview" crop="scale"alt="user avatar" /></div>
                         </div>
                     </div>
                 </nav>
                 <h2 className="text-center">User Profile</h2>|<br/><br/>
                     <div className="card text-center container-sm" >
                     <Link to="/doctors" className="consult"><h5>Consult a Doctor</h5></Link>
-                        <form className="welcomeFeature">
-                        <div className="card-imgUrl-top text-center" >
-                            
-                            {$imagePreview}
-                        </div>  
-                        <div className ="edittableImage">
-                            <input className ="images" type="file" encType="multipart/form-data" class="btn-primary" onChange={this.submitImage} />
-                            <br/>
-                            <br/>
-                            <button className= "btn btn-primary"  onClick= {this.handleSubmit}>Submit</button>
-                        </div> 
-                        </form>
+                    {this.state.imgState && <this.ImageDiv/> &&
+                    <this.EditImageButton  editImage={this.clickButton}/>}
+                        {this.state.showImgState && <EditForm/>}
+                        {this.state.showImgState && <this.CloseButton closeImage={this.closedBtn}/>}
                     <div className="card-body">
                 <h4 className="card-text">Welcome {this.state.username}!</h4>
             

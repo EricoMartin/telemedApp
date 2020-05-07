@@ -19,6 +19,7 @@ import DoctorSignup from '../src/components/docsignup';
 import Single from '../src/components/single';
 import Update from '../src/components/update';
 import Doctors from '../src/components/docList';
+import DoctorsView from '../src/components/doctorsview';
 import HospitalPage from '../src/components/hospital';
 import HospitalLogin from '../src/components/hospLogin';
 import HospitalSignup from '../src/components/hospSignup';
@@ -34,6 +35,7 @@ function App() {
   <Route path= '/covido' component ={CovidInfo}/>
   <Route path= '/covidmap' component ={MapContainer}/>
   <Route path= '/covidstates' component ={StatesContainer}/>
+  <Route path= '/docs/:id' component ={DoctorsView}/>
   <Route path= '/doc' component ={DoctorsPage}/>
   <Route path= '/doclogin' component ={DoctorsLogin}/>
   <Route path= '/docsignup' component ={DoctorSignup}/>

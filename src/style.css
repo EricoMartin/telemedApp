@@ -58,6 +58,9 @@ h1{
   font-weight: 800;
   color: #0d1c2e;
 }
+.black-text{
+  color: #0d1c2e;
+}
 
 #root > div > div > div > header > div > h6 > button:nth-child(1){
   margin: 0 200px;
@@ -126,7 +129,7 @@ ul li{
   margin: 15px 15px;
   height: 150px;
   width: 150px;
-  border-radius: 6px;
+  border-radius: 120px;
   border-left: 1px solid gray;
   border-right: 1px solid gray;
   border-top: 1px solid gray;
@@ -164,7 +167,7 @@ footer{
 }
 @media (min-width: 998px) {
   .welcomeFeature{
-    display: none;
+    display: inline-block;
   }
   .smWelcomeFeature{
     display: inline;
@@ -189,9 +192,9 @@ footer{
   }
 }
 @media only screen and (max-width: 435px){
-  #root > div > div > div > header > div > h6 > button:nth-child(1){
+ /*  #root > div > div > div > header > div > h6 > button:nth-child(1){
     margin: 0 80px;
-  }
+  } */
   img{
     justify-content: center;
     height: 16rem;
@@ -203,6 +206,9 @@ footer{
   @media only screen and (max-width: 320px){
     .container-sm{
       padding: 0px;
+    }
+    #root > div > div.card.text-center.container-sm > div > header > div > h6 > button:nth-child(2){
+      margin-bottom: 10px;
     }
     #root > div > div > div.row > div.col-8{
       padding: 10vw;
