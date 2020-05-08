@@ -82,14 +82,31 @@ ul{
 #root > div > div > form > div:nth-child(1) > label{
   color: #0d1c2e;
 }
-#root > div > div > form > div:nth-child(1) > input{
+/* #root > div > div > form > div:nth-child(1) > input{
   margin: 30px;
   width: 400px;
-}
+} */
 #root > div > div > form > div:nth-child(2) > textarea{
   
   width: 70vw;
   height: 20vh;
+}
+.boxarea{
+  width: 460px;
+  margin: auto;
+  border-radius: 6px;
+  color: #0B0C10;
+}
+.boxer{
+  margin: 20px;
+  border-radius: 6px;
+  color: #0B0C10;
+}
+.btn-dark{
+  margin-bottom: 20px;
+}
+.fbdiv{
+  margin: 20px;
 }
 #root > div > div > form > div.flex.justify-center > input{
   color:  #3144c1!important;
@@ -189,6 +206,11 @@ footer{
   }
   #root > div > div > div > header > div > h6 > button:nth-child(1){
     margin: 20px;
+  }
+  .boxarea{
+    width: auto;
+    margin: auto;
+    border-radius: 6px;
   }
 }
 @media only screen and (max-width: 435px){

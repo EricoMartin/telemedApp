@@ -94,7 +94,7 @@ dotenv.config();
         </div>
     }
     EditImageButton = props => {
-        return (<div><h6 className ="black-text">Image size must not be more than 1MB! Suggested: 150px by 150px.</h6><button className= "btn btn-primary btn-rounded btn-block" style= {{
+        return (<div><this.ImageDiv/><h6 className ="black-text">Image size must not be more than 1MB! Suggested: 150px by 150px.</h6><button className= "btn btn-primary btn-rounded btn-block" style= {{
         marginLeft: 'auto',
         marginRight: 'auto',
         width: '140px' }}
@@ -116,7 +116,7 @@ dotenv.config();
         $imagePreview = (<Image cloudName="automart-app" publicId ={this.state.publicId} secret_url={this.state.imgUrl} height="100" width="100" src={this.state.imgUrl} className="imgPreview" crop="scale"alt="user avatar" />);
         }
         return (
-            <div className="container">
+            <div className="container-fluid">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light container">
                     <a className="navbar-brand" href="#"><h2>Telemed</h2></a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -139,7 +139,7 @@ dotenv.config();
                 <h2 className="text-center">User Profile</h2>|<br/><br/>
                     <div className="card text-center container-sm" >
                     <Link to="/doctors" className="consult"><h5>Consult a Doctor</h5></Link>
-                    {this.state.imgState && <this.ImageDiv/> &&
+                    {this.state.imgState &&  
                     <this.EditImageButton  editImage={this.clickButton}/>}
                         {this.state.showImgState && <EditForm/>}
                         {this.state.showImgState && <this.CloseButton closeImage={this.closedBtn}/>}

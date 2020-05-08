@@ -48,8 +48,10 @@ export default class LoginPage extends React.Component{
     render(){
         return (
             <div className='container text-center'>
+                <br/>
             <h2>Login</h2>
             <br/>
+            <div className= "card boxarea">
             <form onSubmit={this.handleSubmit}>
             <div className="form-group">
             <label htmlFor="email">Email address</label>
@@ -68,7 +70,8 @@ export default class LoginPage extends React.Component{
             
         </form>
             <p>Or Login with Facebook</p>
-                  <div><Facebook/></div>      
+                  <div className="fbdiv"><Facebook/></div> 
+                  </div>     
         </div>
         );
 }}

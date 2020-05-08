@@ -69,6 +69,7 @@ export default class Signup extends React.Component {
                 <h2>Signup</h2>
                 <br />
                 <p> Get fast and reliable medical attention when you sign up</p>
+                <div className= "card boxer">
                 <form onSubmit={this.handleSubmit}>  
                     <div className=".row">
                     <div className="col">
@@ -105,12 +106,13 @@ export default class Signup extends React.Component {
                     </div>
                     <br/><br/>
                     <div className="col container">
-                        <input type="submit" className="form-control btn btn-lg btn-light" placeholder="Sign up"/>
+                        <input type="submit" className="form-control btn btn-lg btn-dark" placeholder="Sign up"/>
                     </div>
                     
                     </div>
                     
                 </form>
+                </div>
             </div>
         )
     }
