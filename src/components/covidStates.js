@@ -16,6 +16,7 @@ export default class CovidState extends React.Component{
             super(props);
             this.tableRef = React.createRef();
             this.getElem = this.getElem.bind(this);
+            this.getElem1 = this.getElem1.bind(this);
             this.state = {
               loading:false,
               stats: []
@@ -65,6 +66,19 @@ export default class CovidState extends React.Component{
             </tr>)
           })
         }
+        getElem1(){
+          const arr = [];
+          return this.state.stats.map(item => {
+            console.log(item);
+            const { state, death, discharged, casesOnAdmission} = item
+            return (<tr key={state}>
+            <td>{state}</td>
+            <td>{casesOnAdmission}</td>
+            <td>{death}</td>
+            <td>{discharged}</td>
+            </tr>)
+          })
+        }
         
     render(){
     return(
@@ -78,7 +92,7 @@ export default class CovidState extends React.Component{
                 <AppBar position="static">
                     <Toolbar>
                     <Typography variant="h6" className='text-center'>
-                    Nigerian States Covid-19 Data  
+                     States Covid-19 Data  
                     <Router>
                     <button type="button" className="btn btn-primary"  onClick={()=> {this.props.history.replace('/covido')}}>Country Data</button>
                     <button type="button" className="btn btn-primary" onClick={()=> {this.props.history.replace('/covidmap')}}>Visualize</button>
@@ -90,7 +104,7 @@ export default class CovidState extends React.Component{
                 {console.log(this.state.stats)} 
               
                 
-                <table class="table table-striped">
+                <table class="table table-striped oldtable">
                     <thead class="black">
                       <tr >
                       <th>States</th>
@@ -103,6 +117,20 @@ export default class CovidState extends React.Component{
                     </thead>
                     <tbody>
                       {this.getElem()}
+                    </tbody>
+                    </table>
+        <br/>
+        <table class="table table-striped newtable">
+                    <thead class="black">
+                      <tr >
+                      <th>States</th>
+                      <th> Cases</th>
+                      <th>Total Deaths</th>
+                      <th>discharged</th>
+                      </tr>  
+                    </thead>
+                    <tbody>
+                      {this.getElem1()}
                     </tbody>
                     </table>
         <br/>

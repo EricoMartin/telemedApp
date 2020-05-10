@@ -32,6 +32,7 @@ export default class DoctorsPage extends React.Component{
         this.submitImage = this.submitImage.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.clickButton = this.clickButton.bind(this);
+        this.closedBtn = this.closedBtn.bind(this);
     }
     componentDidMount(){
         const decoded = jwt_decode(localStorage['master-token']);  
@@ -63,6 +64,13 @@ export default class DoctorsPage extends React.Component{
             ...this.state,
             imgState: false,
             showImgState: true
+        });
+    }
+    closedBtn(){
+        this.setState ({
+            ...this.state,
+            imgState: true,
+            showImgState: false
         });
     }
     async handleSubmit(evt) {
@@ -105,12 +113,19 @@ export default class DoctorsPage extends React.Component{
         width: '140px' }}
         onClick={props.editImage}>Edit Image</button>
       }
+      CloseButton = props => {
+        return <button className= "btn btn-primary btn-rounded btn-block" style= {{
+        margin: 'auto',
+        marginTop: '12px',
+        width: '100px' }}
+        onClick={props.closeImage}>Cancel</button>
+      }
 
     render(){
         let {imagePreviewUrl} = this.state;
         let $imagePreview = null;
         if (imagePreviewUrl) {
-        $imagePreview = (<img src={imagePreviewUrl} alt="user avatar" className="imgPreview" style={{width: "15rem"}}/>);
+        $imagePreview = (<img src={imagePreviewUrl} alt="user avatar" className="imgPreview" />);
         } else {
         $imagePreview = (<Image cloudName="automart-app" publicId ={this.state.publicId} secret_url={this.state.imgUrl} height="100" width="100" src={this.state.imgUrl} className="imgPreview" crop="scale"alt="user avatar" />);
         }
@@ -141,6 +156,7 @@ export default class DoctorsPage extends React.Component{
 
                     {this.state.imgState && <this.EditImageButton  editImage={this.clickButton}/>}
                         {this.state.showImgState && <EditForm/>}
+                        {this.state.showImgState && <this.CloseButton closeImage={this.closedBtn}/>}
                     <div className="card-body">
                 <h4 className="card-text">Welcome Dr {this.state.firstName}!</h4>
                 </div>
@@ -197,8 +213,8 @@ export default class DoctorsPage extends React.Component{
                         </tr>
                     </tbody>
                     </table>
-
-                    <button className="btn-success" >Message Dr {this.state.firstName}!</button>
+                    <textarea name= "message" placeholder  ="Type your message here"></textarea>
+                    <button className="btn btn-success" >Message Dr {this.state.firstName}!</button>
                     </div>
                 </div>
                 </div>

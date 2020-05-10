@@ -102,6 +102,9 @@ ul{
   border-radius: 6px;
   color: #0B0C10;
 }
+.newtable{
+  display: none;
+}
 .btn-dark{
   margin-bottom: 20px;
 }
@@ -120,6 +123,10 @@ ul{
 }
  button{
   padding: 1%;
+}
+button.btn.btn-success{
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 input[submit]{
   margin-bottom: 25px;;
@@ -140,6 +147,18 @@ ul li{
 }
 .btn button Typography{
   margin: 30px;
+}
+textarea{
+  width: 100%;
+  border-radius: 5px;
+}
+img{
+  justify-content: center;
+  height: 10rem;
+  width: 10rem;
+  border-radius: 18px;
+  border: 5px solid #94c6d4;
+  margin-bottom: 20px;
 }
 .imgPreview{
   text-align: center;
@@ -213,24 +232,88 @@ footer{
     border-radius: 6px;
   }
 }
+@media only screen and (max-width: 768px){
+  div.col-8{
+    margin-left: 15%;
+  }
+  button.btn.btn-success{
+    margin-left: 8%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  img{
+    justify-content: center;
+    height: 10rem;
+    width: 10rem;
+    border-radius: 18px;
+    border: 5px solid #94c6d4;
+    margin-bottom: 20px;
+  }
+}
+@media only screen and  (max-width: 767px){
+  
+  .oldtable{
+    display: none;
+  }
+  .newtable{
+    display: block;
+  }
+}
 @media only screen and (max-width: 435px){
  /*  #root > div > div > div > header > div > h6 > button:nth-child(1){
     margin: 0 80px;
   } */
+  div.col-8{
+    margin-left: 12%;
+  }
+  button.btn.btn-success{
+    margin-left: 15%;
+    margin-bottom: 20px;
+  }
+  textarea{
+    margin-left: 10%;
+  }
   img{
     justify-content: center;
-    height: 16rem;
-    padding: 0 auto;
+    height: 10rem;
+    width: 10rem;
+    border-radius: 18px;
+    border: 5px solid #94c6d4;
+    margin-bottom: 20px;
   }
   .table th{
     padding: 0;
   }
+}
+
+@media only screen and (max-width: 375px){
+  div.col-8{
+    margin-left: 5%;
+  }
+  textarea{
+    margin-left: 25%;
+  }
+  button.btn.btn-success{
+    margin-left: 25%;
+    margin-bottom: 20px;
+  }
+}
   @media only screen and (max-width: 320px){
     .container-sm{
       padding: 0px;
     }
     #root > div > div.card.text-center.container-sm > div > header > div > h6 > button:nth-child(2){
       margin-bottom: 10px;
+    }
+    div.col-8{
+      margin-left: 2.5%;
+    }
+    textarea{
+      margin-left: 25%;
+    }
+    button.btn.btn-success{
+      margin-left: 15%;
+      margin-bottom: 20px;
     }
     #root > div > div > div.row > div.col-8{
       padding: 10vw;
@@ -249,4 +332,3 @@ footer{
       padding: 0px;
     }
   }
-}

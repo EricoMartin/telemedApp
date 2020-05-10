@@ -78,7 +78,7 @@ export default class EditImageForm extends React.Component{
         let $imagePreview = null;
         let {imagePreviewUrl} = this.state;
         if (imagePreviewUrl) {
-            $imagePreview = (<img src={imagePreviewUrl} alt="user avatar" className="imgPreview" style={{width: "15rem"}}/>);
+            $imagePreview = (<img src={imagePreviewUrl} alt="user avatar" className="imgPreview" />);
             } else {
             $imagePreview = (<Image cloudName="automart-app" publicId ={this.state.publicId} secret_url={this.state.imgUrl} height="100" width="100" src={this.state.imgUrl} className="imgPreview" crop="scale"alt="user avatar" />);    
             }

@@ -15,7 +15,8 @@ export default class Signup extends React.Component {
             regFee: "",
             regNumber: "",
             specialization: "",
-            services: ""
+            services: "",
+            ambulances: ""
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,19 +30,21 @@ export default class Signup extends React.Component {
     };
     handleSubmit = (event) =>{
         event.preventDefault()
-        const form = new FormData();
-        form.append("name", this.state.name )
-        form.append("services", this.state.services )
-        form.append("address", this.state.address )
-        form.append("email", this.state.email )
-        form.append("phone", this.state.phone )
-        form.append("website", this.state.website )
-        form.append("workingHours", this.state.workingHours )
-        form.append("regFee", this.state.regFee )
-        form.append("regNumber", this.state.regNumber )
-        form.append("specialization", this.state.specialization )
-
-        axios.post('https://rocky-tor-82022.herokuapp.com/api/v1/hosp/signup', form)
+        axios.post('https://rocky-tor-82022.herokuapp.com/api/v1/hosp/signup', {
+            name: this.state.name,
+            services: this.state.services,
+            address: this.state.address,
+            password: this.state.password,
+            confirmPassword: this.state.confirmPassword,
+            email: this.state.email,
+            phone: this.state.phone,
+            website: this.state.website,
+            workingHours: this.state.workingHours,
+            regFee: this.state.regFee,
+            regNumber: this.state.regNumber,
+            specialization: this.state.specialization,
+            ambulances: this.state.ambulances
+        })
         .then(res =>{
             console.log("New Hospital created")
             if(res){
@@ -81,6 +84,14 @@ export default class Signup extends React.Component {
                         <input type="text" className="form-control log" name= "name" placeholder="Hosital Name" value={this.state.name} onChange= {this.handleChange}/>
                     </div>
                     <div className="col">
+                    <label htmlFor="password" className=".col-form-label">Password</label>
+                        <input type="password" className="form-control log" name= "password" placeholder="Password" value={this.state.password} onChange= {this.handleChange}/>
+                    </div>
+                    <div className="col">
+                    <label htmlFor="confirmPassword" className=".col-form-label">Confirm Password</label>
+                        <input type="password" className="form-control log" name= "confirmPassword" placeholder="Confirm Password"  value={this.state.confirmPassword} onChange= {this.handleChange}/>
+                    </div>
+                    <div className="col">
                     <label htmlFor="website" className=".col-form-label">website</label>
                         <input type="text" className="form-control log" name= "website" placeholder="www.hospital.com" value={this.state.website} onChange= {this.handleChange}/>
                     </div>
@@ -117,6 +128,10 @@ export default class Signup extends React.Component {
                     <div className="col">
                     <label htmlFor="services" className=".col-form-label">Medical Services</label>
                         <input type="text" className="form-control log" name= "services"  value={this.state.services} onChange= {this.handleChange}/>
+                    </div>
+                    <div className="col">
+                    <label htmlFor="services" className=".col-form-label">Ambulances</label>
+                        <input type="number" className="form-control log" name= "ambulances"  value={this.state.ambulances} onChange= {this.handleChange}/>
                     </div>
                     
                     <br/><br/>

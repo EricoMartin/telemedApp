@@ -50,7 +50,7 @@ export default class Signup extends React.Component {
                 this.props.history.push('/doclogin')
             }
         })
-        .catch( err =>{
+        .catch(err =>{
             console.log(err)
         })
     }

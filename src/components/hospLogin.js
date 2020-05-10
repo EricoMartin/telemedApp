@@ -8,7 +8,8 @@ export default class LoginPage extends React.Component{
         super(props);
         this.state ={
             email: "",
-            password: "",
+            password:"",
+            regNumber: "",
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,12 +23,15 @@ export default class LoginPage extends React.Component{
     handleSubmit= evt =>{
         evt.preventDefault()
         axios.post('https://rocky-tor-82022.herokuapp.com/api/v1/hosp/signin', {
-            email: this.state.email
+            email: this.state.email,
+            password: this.state.password,
+            regNumber: this.state.regNumber
         })
         .then(res =>{
             
             if(res){
                 JSON.parse(JSON.stringify(res))
+                console.log(res)
                 const token = res.data.token
                 localStorage.setItem('master-token', token)
                 
@@ -58,9 +62,18 @@ export default class LoginPage extends React.Component{
             <input type="email" className="form-control log" 
                 name="email" id="email" aria-describedby="emailHelp" 
                 placeholder="Email/ Username"value={this.state.email} onChange={ this.handleChange}/>
-            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
-            
+            <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input type="password" className="form-control log" name ="password" placeholder="Password" value={this.state.password} onChange={ this.handleChange}/>
+            </div>
+            <div className="form-group">
+            <label htmlFor="regNumber">Registration Number</label>
+            <input type="number" className="form-control log" 
+                name="regNumber" id="regNumber" aria-describedby="regNumber" 
+                placeholder="Registration Number"value={this.state.regNumber} onChange={ this.handleChange}/>
+            <small id="emailHelp" className="form-text text-muted">We'll never share your details with anyone else.</small>
+            </div>
             <div className="form-group form-check">
             <input type="checkbox" className="form-check-input" id="check"/>
             <label className="frmcheck-label" htmlFor="check">Remember me</label>
