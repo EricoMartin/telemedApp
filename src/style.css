@@ -3,8 +3,9 @@
 @import url(https://fonts.googleapis.com/css?family=Pacifico);
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);
 body{
-  background-color: #A8D0E6;
-  color: #ffffff;
+  background-image: "/telemed/src/img/hospital.jpg";
+  background-color: #cfcfcf;
+  color: #fff;
   margin: 0;
 }
 
@@ -193,7 +194,8 @@ img{
   z-index: -5;
 }
 .lead button{
-  background-color: #86c232;
+  background-color: #e71d2e;
+  color: #f6f4f8;
   font-weight: bold;
 }
 

@@ -52,15 +52,13 @@ export default class Signup extends React.Component {
         return(
             <div className='container text-center'>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light container">
-                    <a className="navbar-brand" href="#"><h2>Telemed</h2></a>
+                    <a className="navbar-brand" href="#"><h2>15c-Tech</h2></a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav mr-auto">
                         <a className="nav-item nav-link active" href="/">Home <span className="sr-only">(current)</span></a>
-                        <a className="nav-item nav-link" href="/select">Services</a>
-                        <a className="nav-item nav-link" href="/blog">Blog</a>
                         <a className="nav-item nav-link" href="/covido">Covid-19</a>
                         <a className="nav-item nav-link" href="/signin" >Login</a>
                         </div>

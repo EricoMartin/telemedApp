@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {BrowserRouter as Router, Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style.css';
+import { MDBBtn, MDBIcon } from "mdbreact";
 import imageUrl from '../img/hospital.jpg';
-//import signupUsers from './signup';
+import img from '../img/logo.jpeg';
 
 
 
@@ -17,22 +18,33 @@ export default class CoverPage extends React.Component{
           
         <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column ">
             <main role="main"  className="inner cover">
-        <h1 className="cover-heading" >Welcome to TeleMed App </h1>
-        <p className="lead">Your one-stop HealthCare App at your finger tips. Available on all devices, quick medical response and consultations</p>
-        <p className="lead">
+        <img style={{border: '0px', backgroundColor: 'white'}} src= {img} alt="logo"/><div className="lead">
+        <br/>
           <Router>
-          <button className="btn btn-lg btn-light" onClick={()=> {this.props.history.replace('/select')}}>
-            Get Started</button>
+          <button className="btn btn-lg btn-light" style={{width: '150px'}} onClick={()=> {this.props.history.replace('/signin')}}>
+            Login</button>
+
+            <br/>
+            <br/>
+            <br/>
+            <button className="btn btn-lg btn-light" style={{width: '150px'}} onClick={()=> {this.props.history.replace('/signup')}}>
+            Signup</button>
+            <br/>
+            <br/>
+            <br/>
+                    
           
           </Router>
           
-        </p>
+        </div>
         <br/>
-          Already registered? click<Link to="/signin"> here </Link>to signin
+          Already registered? click<Link to="/select"> here </Link>to signin
       </main>
       <footer className="mastfoot mt-auto">
+      <button class="btn btn-danger btn-rounded" style={{width: '150px'}} type="button" role="button">Emergency</button>
         <div className="inner">
-          <p>Developed by Martini&reg; for Dee's ICT Consult 2020</p>
+          Only click in the case of an Emergency
+          <p> 15C TECH 2020</p>
         </div>
       </footer>
         </div>

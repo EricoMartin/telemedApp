@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style.css';
 import imageUrl from '../img/hospital.jpg';
-//import signupUsers from './signup';
+import img from '../img/logo.jpeg';
 
 
 
@@ -18,7 +18,7 @@ export default class SelectPage extends React.Component{
           
         <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column ">
             <main role="main"  className="inner cover">
-        <h1 className="cover-heading" >Welcome to TeleMed App </h1>
+            <img style={{border: '0px', backgroundColor: 'white'}} src= {img} alt="logo"/>
         <p className="lead">Click button to select</p>
         <p className="lead">
           <Router>
@@ -42,7 +42,7 @@ export default class SelectPage extends React.Component{
       </main>
       <footer className="mastfoot mt-auto">
         <div className="inner">
-          <p>Developed by Martini&reg; for Dee's ICT Consult 2020</p>
+        <p> 15C TECH 2020</p>
         </div>
       </footer>
         </div>
